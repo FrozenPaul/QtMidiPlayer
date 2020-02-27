@@ -1,0 +1,10 @@
+main.o
+mainwindow.o
+playerheartbeatcallback.o
+playerfinishedcallback.o
+mynotecallback.o
+qrc_pianokeys.o
+moc_mainwindow.o
+moc_playerheartbeatcallback.o
+moc_playerfinishedcallback.o
+moc_mynotecallback.o

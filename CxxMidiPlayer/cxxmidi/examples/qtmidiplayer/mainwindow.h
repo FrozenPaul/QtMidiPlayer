@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QActionGroup>
+#include <QPushButton>
 
 #include <cxxmidi/file.hpp>
 #include <cxxmidi/output/default.hpp>
@@ -38,7 +39,7 @@ private slots:
     void setOutput(int num_);
     void onOutputSelected(QAction* action_);
     void playerFinished();
-    void updateNoteInformation(CxxMidi::Note, bool);
+    void updateNoteInformation(CxxMidi::Note note, bool isPressed);
 
 private:
 
@@ -60,8 +61,11 @@ private:
 
     // add by Paul Halian
     MyNoteCallback _myNoteCallback;
+    QMap<QString,QPushButton*> _allButtons;
+    QMap<QString,QPushButton*> _allCurrentPushedButtons;
 
     bool _sliderLocked;
+    bool _is_playing = true;
 };
 
 #endif // MAINWINDOW_H

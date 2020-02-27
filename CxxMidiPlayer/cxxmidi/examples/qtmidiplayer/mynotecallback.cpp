@@ -12,5 +12,5 @@ MyNoteCallback::MyNoteCallback(
 
 void MyNoteCallback::operator()(CxxMidi::Note note, bool is_pressed)
 {
-    this->noteChanged(note, is_pressed);
+    /*emit*/ this->noteChanged(note, is_pressed);
 }

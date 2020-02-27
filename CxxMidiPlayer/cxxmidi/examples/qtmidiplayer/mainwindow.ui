@@ -6,115 +6,2504 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>408</width>
-    <height>267</height>
+    <width>1582</width>
+    <height>509</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1582</width>
+    <height>509</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>CxxMidi Player</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">#MainWindow{
+	height: 500px;
+    width: 900px;
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QTextBrowser" name="textBrowser"/>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="QSlider" name="sliderTimeline">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="labelTime">
-        <property name="text">
-         <string>00:00:00</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>/</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="labelTotal">
-        <property name="text">
-         <string>00:00:00</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <widget class="QPushButton" name="pushButtonPlay">
-        <property name="text">
-         <string>Play</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonPause">
-        <property name="text">
-         <string>Pause</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Speed:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QDoubleSpinBox" name="doubleSpinBoxSpeed">
-        <property name="suffix">
-         <string>x</string>
-        </property>
-        <property name="minimum">
-         <double>0.100000000000000</double>
-        </property>
-        <property name="maximum">
-         <double>10.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
-        </property>
-        <property name="value">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-   </layout>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#pushButton:pressed{
+background:purple;
+}</string>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>1561</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#textBrowser{
+text-align: center;
+}</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>387</y>
+      <width>1561</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QSlider" name="sliderTimeline">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelTime">
+       <property name="text">
+        <string>00:00:00</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>/</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelTotal">
+       <property name="text">
+        <string>00:00:00</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>417</y>
+      <width>1561</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QPushButton" name="pushButtonPlay">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>Play</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonPause">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>Pause</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Speed:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDoubleSpinBox" name="doubleSpinBoxSpeed">
+       <property name="suffix">
+        <string>x</string>
+       </property>
+       <property name="minimum">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>10.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="value">
+        <double>1.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>250</y>
+      <width>1561</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string/>
+         </property>
+         <widget class="QPushButton" name="G2s">
+          <property name="geometry">
+           <rect>
+            <x>410</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#G2s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#G2s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="F2">
+          <property name="geometry">
+           <rect>
+            <x>360</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#F2 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#F2:pressed{
+border-image: url(&quot;G:/University/images/Cpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="E7">
+          <property name="geometry">
+           <rect>
+            <x>1380</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#E7 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/E.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#E7:pressed{
+border-image: url(&quot;G:/University/images/Epurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="G3s">
+          <property name="geometry">
+           <rect>
+            <x>620</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#G3s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#G3s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="G4s">
+          <property name="geometry">
+           <rect>
+            <x>830</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#G4s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#G4s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="E2">
+          <property name="geometry">
+           <rect>
+            <x>330</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#E2 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/E.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#E2:pressed{
+border-image: url(&quot;G:/University/images/Epurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="C6">
+          <property name="geometry">
+           <rect>
+            <x>1110</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#C6 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#C6:pressed{
+border-image: url(&quot;G:/University/images/Cpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="G5">
+          <property name="geometry">
+           <rect>
+            <x>1020</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#G5 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/G.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#G5:pressed{
+border-image: url(&quot;G:/University/images/Gpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="D2">
+          <property name="geometry">
+           <rect>
+            <x>300</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#D2 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/D.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#D2:pressed{
+border-image: url(&quot;G:/University/images/Dpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="A0s">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>10</y>
+            <width>21</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#A0s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#A0s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="G2">
+          <property name="geometry">
+           <rect>
+            <x>390</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#G2 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/G.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#G2:pressed{
+border-image: url(&quot;G:/University/images/Gpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="E1">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#E1 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/E.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#E1:pressed{
+border-image: url(&quot;G:/University/images/Epurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="C3">
+          <property name="geometry">
+           <rect>
+            <x>480</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#C3 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#C3:pressed{
+border-image: url(&quot;G:/University/images/Cpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="A2">
+          <property name="geometry">
+           <rect>
+            <x>420</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#A2 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/A.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#A2:pressed{
+border-image: url(&quot;G:/University/images/Apurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="C8">
+          <property name="geometry">
+           <rect>
+            <x>1530</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#C8 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C8.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#C8:pressed{
+border-image: url(&quot;G:/University/images/C8purple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="A5s">
+          <property name="geometry">
+           <rect>
+            <x>1070</x>
+            <y>10</y>
+            <width>21</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#A5s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#A5s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="F4">
+          <property name="geometry">
+           <rect>
+            <x>780</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#F4 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+
+#F4:pressed{
+border-image: url(&quot;G:/University/images/Cpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="E5">
+          <property name="geometry">
+           <rect>
+            <x>960</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#E5 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/E.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#E5:pressed{
+border-image: url(&quot;G:/University/images/Epurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="G1">
+          <property name="geometry">
+           <rect>
+            <x>180</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#G1 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/G.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#G1:pressed{
+border-image: url(&quot;G:/University/images/Gpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="A4s">
+          <property name="geometry">
+           <rect>
+            <x>860</x>
+            <y>10</y>
+            <width>21</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#A4s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#A4s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="F4s">
+          <property name="geometry">
+           <rect>
+            <x>800</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#F4s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#F4s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="B5">
+          <property name="geometry">
+           <rect>
+            <x>1080</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#B5 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/E.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#B5:pressed{
+border-image: url(&quot;G:/University/images/Epurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="B1">
+          <property name="geometry">
+           <rect>
+            <x>240</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#B1 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/E.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#B1:pressed{
+border-image: url(&quot;G:/University/images/Epurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="D5">
+          <property name="geometry">
+           <rect>
+            <x>930</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#D5 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/D.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#D5:pressed{
+border-image: url(&quot;G:/University/images/Dpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="C7">
+          <property name="geometry">
+           <rect>
+            <x>1320</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#C7 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#C7:pressed{
+border-image: url(&quot;G:/University/images/Cpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="A6">
+          <property name="geometry">
+           <rect>
+            <x>1260</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#A6 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/A.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#A6:pressed{
+border-image: url(&quot;G:/University/images/Apurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="A3">
+          <property name="geometry">
+           <rect>
+            <x>630</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#A3 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/A.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#A3:pressed{
+border-image: url(&quot;G:/University/images/Apurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="E4">
+          <property name="geometry">
+           <rect>
+            <x>750</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#E4 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/E.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#E4:pressed{
+border-image: url(&quot;G:/University/images/Epurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="F7">
+          <property name="geometry">
+           <rect>
+            <x>1410</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#F7 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#F7:pressed{
+border-image: url(&quot;G:/University/images/Cpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="G5s">
+          <property name="geometry">
+           <rect>
+            <x>1040</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#G5s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#G5s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="F3s">
+          <property name="geometry">
+           <rect>
+            <x>590</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#F3s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#F3s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="C2">
+          <property name="geometry">
+           <rect>
+            <x>270</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#C2 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#C2:pressed{
+border-image: url(&quot;G:/University/images/Cpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="B3">
+          <property name="geometry">
+           <rect>
+            <x>660</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#B3 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/E.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#B3:pressed{
+border-image: url(&quot;G:/University/images/Epurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="E6">
+          <property name="geometry">
+           <rect>
+            <x>1170</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#E6 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/E.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#E6:pressed{
+border-image: url(&quot;G:/University/images/Epurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="B2">
+          <property name="geometry">
+           <rect>
+            <x>450</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#B2 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/E.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#B2:pressed{
+border-image: url(&quot;G:/University/images/Epurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="D2s">
+          <property name="geometry">
+           <rect>
+            <x>320</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#D2s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#D2s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="F6s">
+          <property name="geometry">
+           <rect>
+            <x>1220</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#F6s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#F6s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="D1s">
+          <property name="geometry">
+           <rect>
+            <x>110</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#D1s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#D1s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="C5s">
+          <property name="geometry">
+           <rect>
+            <x>920</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#C5s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#C5s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="A5">
+          <property name="geometry">
+           <rect>
+            <x>1050</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#A5 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/A.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+
+#A5:pressed{
+border-image: url(&quot;G:/University/images/Apurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="C3s">
+          <property name="geometry">
+           <rect>
+            <x>500</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#C3s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#C3s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="G7s">
+          <property name="geometry">
+           <rect>
+            <x>1460</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#G7s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#G7s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="F6">
+          <property name="geometry">
+           <rect>
+            <x>1200</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#F6 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#F6:pressed{
+border-image: url(&quot;G:/University/images/Cpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="A3s">
+          <property name="geometry">
+           <rect>
+            <x>650</x>
+            <y>10</y>
+            <width>21</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#A3s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#A3s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="D5s">
+          <property name="geometry">
+           <rect>
+            <x>950</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#D5s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#D5s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="D3s">
+          <property name="geometry">
+           <rect>
+            <x>530</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#D3s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#D3s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="D6">
+          <property name="geometry">
+           <rect>
+            <x>1140</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#D6 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/D.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#D6:pressed{
+border-image: url(&quot;G:/University/images/Dpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="D7">
+          <property name="geometry">
+           <rect>
+            <x>1350</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#D7 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/D.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#D7:pressed{
+border-image: url(&quot;G:/University/images/Dpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="A7">
+          <property name="geometry">
+           <rect>
+            <x>1470</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#A7 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/A.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#A7:pressed{
+border-image: url(&quot;G:/University/images/Apurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="G6s">
+          <property name="geometry">
+           <rect>
+            <x>1250</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#G6s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#G6s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="C7s">
+          <property name="geometry">
+           <rect>
+            <x>1340</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#C7s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#C7s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="C6s">
+          <property name="geometry">
+           <rect>
+            <x>1130</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#C6s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#C6s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="D3">
+          <property name="geometry">
+           <rect>
+            <x>510</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#D3 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/D.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#D3:pressed{
+border-image: url(&quot;G:/University/images/Dpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="F5s">
+          <property name="geometry">
+           <rect>
+            <x>1010</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#F5s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#F5s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="F5">
+          <property name="geometry">
+           <rect>
+            <x>990</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#F5 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#F5:pressed{
+border-image: url(&quot;G:/University/images/Cpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="B7">
+          <property name="geometry">
+           <rect>
+            <x>1500</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#B7 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/E.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#B7:pressed{
+border-image: url(&quot;G:/University/images/Epurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="F7s">
+          <property name="geometry">
+           <rect>
+            <x>1430</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#F7s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#F7s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="A6s">
+          <property name="geometry">
+           <rect>
+            <x>1280</x>
+            <y>10</y>
+            <width>21</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#A6s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#A6s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}
+</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="G4">
+          <property name="geometry">
+           <rect>
+            <x>810</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#G4 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/G.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#G4:pressed{
+border-image: url(&quot;G:/University/images/Gpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="A7s">
+          <property name="geometry">
+           <rect>
+            <x>1490</x>
+            <y>10</y>
+            <width>21</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#A7s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#A7s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="A2s">
+          <property name="geometry">
+           <rect>
+            <x>440</x>
+            <y>10</y>
+            <width>21</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#A2s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#A2s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="D1">
+          <property name="geometry">
+           <rect>
+            <x>90</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#D1 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/D.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#D1:pressed{
+border-image: url(&quot;G:/University/images/Dpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="B0">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#B0 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/E.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#B0:pressed{
+border-image: url(&quot;G:/University/images/Epurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="G3">
+          <property name="geometry">
+           <rect>
+            <x>600</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#G3 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/G.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#G3:pressed{
+border-image: url(&quot;G:/University/images/Gpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="F3">
+          <property name="geometry">
+           <rect>
+            <x>570</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#F3 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#F3:pressed{
+border-image: url(&quot;G:/University/images/Cpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="C2s">
+          <property name="geometry">
+           <rect>
+            <x>290</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#C2s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#C2s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="B6">
+          <property name="geometry">
+           <rect>
+            <x>1290</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#B6 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/E.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#B6:pressed{
+border-image: url(&quot;G:/University/images/Epurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="C1s">
+          <property name="geometry">
+           <rect>
+            <x>80</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#C1s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#C1s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="A1s">
+          <property name="geometry">
+           <rect>
+            <x>230</x>
+            <y>10</y>
+            <width>21</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#A1s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#A1s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="D7s">
+          <property name="geometry">
+           <rect>
+            <x>1370</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#D7s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#D7s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="C1">
+          <property name="geometry">
+           <rect>
+            <x>60</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#C1 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#C1:pressed{
+border-image: url(&quot;G:/University/images/Cpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="B4">
+          <property name="geometry">
+           <rect>
+            <x>870</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#B4 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/E.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#B4:pressed{
+border-image: url(&quot;G:/University/images/Epurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="F2s">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#F2s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#F2s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="A4">
+          <property name="geometry">
+           <rect>
+            <x>840</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#A4 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/A.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#A4:pressed{
+border-image: url(&quot;G:/University/images/Apurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="E3">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#E3 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/E.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#E3:pressed{
+border-image: url(&quot;G:/University/images/Epurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="A0">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#A0 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#A0:pressed{
+border-image: url(&quot;G:/University/images/Cpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="C4s">
+          <property name="geometry">
+           <rect>
+            <x>710</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#C4s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#C4s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="C5">
+          <property name="geometry">
+           <rect>
+            <x>900</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#C5 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+
+#C5:pressed{
+border-image: url(&quot;G:/University/images/Cpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="D6s">
+          <property name="geometry">
+           <rect>
+            <x>1160</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#D6s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#D6s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="G7">
+          <property name="geometry">
+           <rect>
+            <x>1440</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#G7 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/G.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#G7:pressed{
+border-image: url(&quot;G:/University/images/Gpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="D4s">
+          <property name="geometry">
+           <rect>
+            <x>740</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#D4s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#D4s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="G1s">
+          <property name="geometry">
+           <rect>
+            <x>200</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#G1s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#G1s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="F1">
+          <property name="geometry">
+           <rect>
+            <x>150</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#F1 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#F1:pressed{
+border-image: url(&quot;G:/University/images/Cpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="C4">
+          <property name="geometry">
+           <rect>
+            <x>690</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#C4 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#C4:pressed{
+border-image: url(&quot;G:/University/images/Cpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="G6">
+          <property name="geometry">
+           <rect>
+            <x>1230</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#G6 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/G.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#G6:pressed{
+border-image: url(&quot;G:/University/images/Gpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="A1">
+          <property name="geometry">
+           <rect>
+            <x>210</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#A1 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/A.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#A1:pressed{
+border-image: url(&quot;G:/University/images/Apurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="D4">
+          <property name="geometry">
+           <rect>
+            <x>720</x>
+            <y>10</y>
+            <width>31</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#D4 {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/D.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#D4:pressed{
+border-image: url(&quot;G:/University/images/Dpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="F1s">
+          <property name="geometry">
+           <rect>
+            <x>170</x>
+            <y>10</y>
+            <width>20</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#F1s {
+background-color: transparent;
+border-image: url(&quot;G:/University/images/C#Db.png&quot;);
+background: none;
+border: none;
+background-repeat: none;
+}
+#F1s:pressed{
+border-image: url(&quot;G:/University/images/C#Dbpurple.png&quot;);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <zorder>B0</zorder>
+         <zorder>A0</zorder>
+         <zorder>C1</zorder>
+         <zorder>D1</zorder>
+         <zorder>E1</zorder>
+         <zorder>F1</zorder>
+         <zorder>G1</zorder>
+         <zorder>A1</zorder>
+         <zorder>B1</zorder>
+         <zorder>C2</zorder>
+         <zorder>D2</zorder>
+         <zorder>E2</zorder>
+         <zorder>F2</zorder>
+         <zorder>G2</zorder>
+         <zorder>A2</zorder>
+         <zorder>B2</zorder>
+         <zorder>C3</zorder>
+         <zorder>D3</zorder>
+         <zorder>E3</zorder>
+         <zorder>F3</zorder>
+         <zorder>G3</zorder>
+         <zorder>A3</zorder>
+         <zorder>B3</zorder>
+         <zorder>C4</zorder>
+         <zorder>D4</zorder>
+         <zorder>E4</zorder>
+         <zorder>F4</zorder>
+         <zorder>G4</zorder>
+         <zorder>A4</zorder>
+         <zorder>B4</zorder>
+         <zorder>C5</zorder>
+         <zorder>D5</zorder>
+         <zorder>E5</zorder>
+         <zorder>F5</zorder>
+         <zorder>G5</zorder>
+         <zorder>A5</zorder>
+         <zorder>B5</zorder>
+         <zorder>C6</zorder>
+         <zorder>D6</zorder>
+         <zorder>E6</zorder>
+         <zorder>F6</zorder>
+         <zorder>G6</zorder>
+         <zorder>A6</zorder>
+         <zorder>B6</zorder>
+         <zorder>C7</zorder>
+         <zorder>D7</zorder>
+         <zorder>E7</zorder>
+         <zorder>F7</zorder>
+         <zorder>G7</zorder>
+         <zorder>A7</zorder>
+         <zorder>B7</zorder>
+         <zorder>C8</zorder>
+         <zorder>A0s</zorder>
+         <zorder>A1s</zorder>
+         <zorder>A2s</zorder>
+         <zorder>A3s</zorder>
+         <zorder>A4s</zorder>
+         <zorder>A5s</zorder>
+         <zorder>A6s</zorder>
+         <zorder>A7s</zorder>
+         <zorder>C2s</zorder>
+         <zorder>C3s</zorder>
+         <zorder>C4s</zorder>
+         <zorder>C5s</zorder>
+         <zorder>C6s</zorder>
+         <zorder>C7s</zorder>
+         <zorder>D1s</zorder>
+         <zorder>D2s</zorder>
+         <zorder>D3s</zorder>
+         <zorder>D4s</zorder>
+         <zorder>D5s</zorder>
+         <zorder>D6s</zorder>
+         <zorder>D7s</zorder>
+         <zorder>F1s</zorder>
+         <zorder>F2s</zorder>
+         <zorder>F3s</zorder>
+         <zorder>F4s</zorder>
+         <zorder>F5s</zorder>
+         <zorder>F6s</zorder>
+         <zorder>F7s</zorder>
+         <zorder>G1s</zorder>
+         <zorder>G2s</zorder>
+         <zorder>G3s</zorder>
+         <zorder>G4s</zorder>
+         <zorder>G5s</zorder>
+         <zorder>G6s</zorder>
+         <zorder>G7s</zorder>
+         <zorder>C1s</zorder>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>408</width>
+     <width>1582</width>
      <height>26</height>
     </rect>
    </property>

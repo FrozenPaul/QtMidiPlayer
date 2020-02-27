@@ -1,0 +1,11 @@
+main.o
+filemodel.o
+fileview.o
+trackmodel.o
+trackview.o
+mainwindow.o
+moc_filemodel.o
+moc_fileview.o
+moc_trackmodel.o
+moc_trackview.o
+moc_mainwindow.o

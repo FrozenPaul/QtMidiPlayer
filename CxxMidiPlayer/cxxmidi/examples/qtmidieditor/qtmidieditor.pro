@@ -33,7 +33,7 @@ unix:!macx {
     LIBS += /usr/lib/x86_64-linux-gnu/libasound.so
 }
 win32 {
-    LIBS += winmm.lib
+    LIBS += "c:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.18362.0\\um\\x64\\winmm.lib"
 }
 
 

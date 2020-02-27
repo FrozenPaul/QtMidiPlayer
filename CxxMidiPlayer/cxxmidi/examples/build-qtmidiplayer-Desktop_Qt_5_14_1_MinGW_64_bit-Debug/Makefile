@@ -53,28 +53,32 @@ OBJECTS_DIR   = .
 
 SOURCES       = ..\qtmidiplayer\main.cpp \
 		..\qtmidiplayer\mainwindow.cpp \
-		..\qtmidiplayer\mynotecallback.cpp \
+		..\qtmidiplayer\playerheartbeatcallback.cpp \
 		..\qtmidiplayer\playerfinishedcallback.cpp \
-		..\qtmidiplayer\playerheartbeatcallback.cpp moc_mainwindow.cpp \
+		..\qtmidiplayer\mynotecallback.cpp qrc_pianokeys.cpp \
+		moc_mainwindow.cpp \
 		moc_playerheartbeatcallback.cpp \
-		moc_playerfinishedcallback.cpp
+		moc_playerfinishedcallback.cpp \
+		moc_mynotecallback.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
-		mynotecallback.o \
-		playerfinishedcallback.o \
 		playerheartbeatcallback.o \
+		playerfinishedcallback.o \
+		mynotecallback.o \
+		qrc_pianokeys.o \
 		moc_mainwindow.o \
 		moc_playerheartbeatcallback.o \
-		moc_playerfinishedcallback.o
+		moc_playerfinishedcallback.o \
+		moc_mynotecallback.o
 
 DIST          =  ..\qtmidiplayer\mainwindow.h \
-		..\qtmidiplayer\mynotecallback.h \
 		..\qtmidiplayer\playerheartbeatcallback.h \
-		..\qtmidiplayer\playerfinishedcallback.h ..\qtmidiplayer\main.cpp \
+		..\qtmidiplayer\playerfinishedcallback.h \
+		..\qtmidiplayer\mynotecallback.h ..\qtmidiplayer\main.cpp \
 		..\qtmidiplayer\mainwindow.cpp \
-		..\qtmidiplayer\mynotecallback.cpp \
+		..\qtmidiplayer\playerheartbeatcallback.cpp \
 		..\qtmidiplayer\playerfinishedcallback.cpp \
-		..\qtmidiplayer\playerheartbeatcallback.cpp
+		..\qtmidiplayer\mynotecallback.cpp
 QMAKE_TARGET  = qtmidiplayer
 DESTDIR        =  #avoid trailing-slash linebreak
 TARGET         = qtmidiplayer.exe
@@ -86,7 +90,7 @@ first: all
 all: Makefile  qtmidiplayer.exe
 
 qtmidiplayer.exe: G:/QT/5.14.1/mingw73_64/lib/libQt5Widgets.a G:/QT/5.14.1/mingw73_64/lib/libQt5Gui.a G:/QT/5.14.1/mingw73_64/lib/libQt5Core.a G:/QT/5.14.1/mingw73_64/lib/libqtmain.a ui_mainwindow.h $(OBJECTS) 
-	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) $(OBJECTS)  $(LIBS)
+	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) @object_script.qtmidiplayer  $(LIBS)
 
 Makefile: ../qtmidiplayer/qtmidiplayer.pro G:/QT/5.14.1/mingw73_64/mkspecs/win32-g++/qmake.conf G:/QT/5.14.1/mingw73_64/mkspecs/features/spec_pre.prf \
 		G:/QT/5.14.1/mingw73_64/mkspecs/qdevice.pri \
@@ -289,6 +293,7 @@ Makefile: ../qtmidiplayer/qtmidiplayer.pro G:/QT/5.14.1/mingw73_64/mkspecs/win32
 		G:/QT/5.14.1/mingw73_64/mkspecs/features/yacc.prf \
 		G:/QT/5.14.1/mingw73_64/mkspecs/features/lex.prf \
 		../qtmidiplayer/qtmidiplayer.pro \
+		../qtmidiplayer/pianokeys.qrc \
 		G:/QT/5.14.1/mingw73_64/lib/Qt5Widgets.prl \
 		G:/QT/5.14.1/mingw73_64/lib/Qt5Gui.prl \
 		G:/QT/5.14.1/mingw73_64/lib/Qt5Core.prl \
@@ -495,6 +500,7 @@ G:/QT/5.14.1/mingw73_64/mkspecs/features/exceptions.prf:
 G:/QT/5.14.1/mingw73_64/mkspecs/features/yacc.prf:
 G:/QT/5.14.1/mingw73_64/mkspecs/features/lex.prf:
 ../qtmidiplayer/qtmidiplayer.pro:
+../qtmidiplayer/pianokeys.qrc:
 G:/QT/5.14.1/mingw73_64/lib/Qt5Widgets.prl:
 G:/QT/5.14.1/mingw73_64/lib/Qt5Gui.prl:
 G:/QT/5.14.1/mingw73_64/lib/Qt5Core.prl:
@@ -505,10 +511,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) qtmidiplayer.zip $(SOURCES) $(DIST) ..\qtmidiplayer\qtmidiplayer.pro G:\QT\5.14.1\mingw73_64\mkspecs\features\spec_pre.prf G:\QT\5.14.1\mingw73_64\mkspecs\qdevice.pri G:\QT\5.14.1\mingw73_64\mkspecs\features\device_config.prf G:\QT\5.14.1\mingw73_64\mkspecs\common\sanitize.conf G:\QT\5.14.1\mingw73_64\mkspecs\common\gcc-base.conf G:\QT\5.14.1\mingw73_64\mkspecs\common\g++-base.conf G:\QT\5.14.1\mingw73_64\mkspecs\common\angle.conf G:\QT\5.14.1\mingw73_64\mkspecs\features\win32\windows_vulkan_sdk.prf G:\QT\5.14.1\mingw73_64\mkspecs\common\windows-vulkan.conf G:\QT\5.14.1\mingw73_64\mkspecs\common\g++-win32.conf G:\QT\5.14.1\mingw73_64\mkspecs\common\windows-desktop.conf G:\QT\5.14.1\mingw73_64\mkspecs\qconfig.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3danimation.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3danimation_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dcore.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dcore_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dextras.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dextras_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dinput.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dinput_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dlogic.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dlogic_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquick.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquick_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickextras.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickextras_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickinput.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickinput_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickrender.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickrender_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3drender.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3drender_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_accessibility_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axbase.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axbase_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axcontainer.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axcontainer_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axserver.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axserver_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bluetooth.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bluetooth_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bodymovin_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bootstrap_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_charts.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_charts_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_concurrent.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_concurrent_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_core.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_core_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_datavisualization.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_datavisualization_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_dbus.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_dbus_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_designer.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_designer_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_designercomponents_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_edid_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_egl_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_fb_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gamepad.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gamepad_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gui.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gui_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_help.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_help_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_location.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_location_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimedia.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimedia_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_network.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_network_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_networkauth.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_networkauth_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_nfc.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_nfc_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_opengl.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_opengl_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_openglextensions.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_openglextensions_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_packetprotocol_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioning.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioning_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioningquick.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioningquick_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_printsupport.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_printsupport_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_purchasing.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_purchasing_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qml.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qml_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmldebug_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmldevtools_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlmodels.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlmodels_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmltest.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmltest_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlworkerscript.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3d.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3d_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3dassetimport.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3dassetimport_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3drender.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3drender_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3druntimerender.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3druntimerender_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3dutils.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3dutils_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickparticles_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickshapes_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickwidgets.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickwidgets_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_remoteobjects.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_remoteobjects_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_repparser.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_repparser_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_script.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_script_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_scripttools.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_scripttools_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_scxml.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_scxml_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sensors.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sensors_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialbus.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialbus_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialport.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialport_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sql.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sql_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_svg.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_svg_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_testlib.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_testlib_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_texttospeech.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_texttospeech_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_theme_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_uiplugin.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_uitools.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_uitools_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_virtualkeyboard.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_virtualkeyboard_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_vulkan_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_webchannel.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_webchannel_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_websockets.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_websockets_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_widgets.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_widgets_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_winextras.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_winextras_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xml.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xml_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\features\qt_functions.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\qt_config.prf G:\QT\5.14.1\mingw73_64\mkspecs\win32-g++\qmake.conf G:\QT\5.14.1\mingw73_64\mkspecs\features\spec_post.prf .qmake.stash G:\QT\5.14.1\mingw73_64\mkspecs\features\exclusive_builds.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\toolchain.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\default_pre.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\win32\default_pre.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\resolve_config.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\default_post.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\qml_debug.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\precompile_header.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\warn_on.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\qt.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\resources_functions.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\resources.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\moc.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\win32\opengl.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\uic.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\qmake_use.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\file_copies.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\win32\windows.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\testcase_targets.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\exceptions.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\yacc.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\lex.prf ..\qtmidiplayer\qtmidiplayer.pro G:\QT\5.14.1\mingw73_64\lib\Qt5Widgets.prl G:\QT\5.14.1\mingw73_64\lib\Qt5Gui.prl G:\QT\5.14.1\mingw73_64\lib\Qt5Core.prl G:\QT\5.14.1\mingw73_64\lib\qtmain.prl    G:\QT\5.14.1\mingw73_64\mkspecs\features\data\dummy.cpp ..\qtmidiplayer\mainwindow.h ..\qtmidiplayer\mynotecallback.h ..\qtmidiplayer\playerheartbeatcallback.h ..\qtmidiplayer\playerfinishedcallback.h  ..\qtmidiplayer\main.cpp ..\qtmidiplayer\mainwindow.cpp ..\qtmidiplayer\mynotecallback.cpp ..\qtmidiplayer\playerfinishedcallback.cpp ..\qtmidiplayer\playerheartbeatcallback.cpp ..\qtmidiplayer\mainwindow.ui    
+	$(ZIP) qtmidiplayer.zip $(SOURCES) $(DIST) ..\qtmidiplayer\qtmidiplayer.pro G:\QT\5.14.1\mingw73_64\mkspecs\features\spec_pre.prf G:\QT\5.14.1\mingw73_64\mkspecs\qdevice.pri G:\QT\5.14.1\mingw73_64\mkspecs\features\device_config.prf G:\QT\5.14.1\mingw73_64\mkspecs\common\sanitize.conf G:\QT\5.14.1\mingw73_64\mkspecs\common\gcc-base.conf G:\QT\5.14.1\mingw73_64\mkspecs\common\g++-base.conf G:\QT\5.14.1\mingw73_64\mkspecs\common\angle.conf G:\QT\5.14.1\mingw73_64\mkspecs\features\win32\windows_vulkan_sdk.prf G:\QT\5.14.1\mingw73_64\mkspecs\common\windows-vulkan.conf G:\QT\5.14.1\mingw73_64\mkspecs\common\g++-win32.conf G:\QT\5.14.1\mingw73_64\mkspecs\common\windows-desktop.conf G:\QT\5.14.1\mingw73_64\mkspecs\qconfig.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3danimation.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3danimation_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dcore.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dcore_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dextras.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dextras_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dinput.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dinput_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dlogic.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dlogic_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquick.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquick_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickextras.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickextras_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickinput.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickinput_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickrender.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickrender_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3drender.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_3drender_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_accessibility_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axbase.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axbase_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axcontainer.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axcontainer_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axserver.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_axserver_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bluetooth.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bluetooth_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bodymovin_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_bootstrap_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_charts.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_charts_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_concurrent.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_concurrent_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_core.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_core_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_datavisualization.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_datavisualization_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_dbus.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_dbus_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_designer.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_designer_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_designercomponents_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_edid_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_egl_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_fb_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gamepad.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gamepad_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gui.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_gui_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_help.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_help_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_location.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_location_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimedia.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimedia_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_network.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_network_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_networkauth.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_networkauth_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_nfc.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_nfc_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_opengl.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_opengl_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_openglextensions.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_openglextensions_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_packetprotocol_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioning.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioning_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioningquick.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_positioningquick_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_printsupport.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_printsupport_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_purchasing.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_purchasing_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qml.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qml_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmldebug_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmldevtools_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlmodels.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlmodels_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmltest.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmltest_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlworkerscript.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3d.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3d_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3dassetimport.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3dassetimport_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3drender.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3drender_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3druntimerender.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3druntimerender_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3dutils.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick3dutils_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quick_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickparticles_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickshapes_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickwidgets.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_quickwidgets_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_remoteobjects.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_remoteobjects_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_repparser.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_repparser_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_script.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_script_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_scripttools.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_scripttools_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_scxml.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_scxml_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sensors.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sensors_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialbus.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialbus_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialport.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_serialport_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sql.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_sql_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_svg.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_svg_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_testlib.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_testlib_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_texttospeech.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_texttospeech_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_theme_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_uiplugin.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_uitools.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_uitools_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_virtualkeyboard.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_virtualkeyboard_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_vulkan_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_webchannel.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_webchannel_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_websockets.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_websockets_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_widgets.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_widgets_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_winextras.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_winextras_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xml.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xml_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns.pri G:\QT\5.14.1\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri G:\QT\5.14.1\mingw73_64\mkspecs\features\qt_functions.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\qt_config.prf G:\QT\5.14.1\mingw73_64\mkspecs\win32-g++\qmake.conf G:\QT\5.14.1\mingw73_64\mkspecs\features\spec_post.prf .qmake.stash G:\QT\5.14.1\mingw73_64\mkspecs\features\exclusive_builds.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\toolchain.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\default_pre.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\win32\default_pre.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\resolve_config.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\default_post.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\qml_debug.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\precompile_header.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\warn_on.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\qt.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\resources_functions.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\resources.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\moc.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\win32\opengl.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\uic.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\qmake_use.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\file_copies.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\win32\windows.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\testcase_targets.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\exceptions.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\yacc.prf G:\QT\5.14.1\mingw73_64\mkspecs\features\lex.prf ..\qtmidiplayer\qtmidiplayer.pro ..\qtmidiplayer\pianokeys.qrc G:\QT\5.14.1\mingw73_64\lib\Qt5Widgets.prl G:\QT\5.14.1\mingw73_64\lib\Qt5Gui.prl G:\QT\5.14.1\mingw73_64\lib\Qt5Core.prl G:\QT\5.14.1\mingw73_64\lib\qtmain.prl   ..\qtmidiplayer\pianokeys.qrc G:\QT\5.14.1\mingw73_64\mkspecs\features\data\dummy.cpp ..\qtmidiplayer\mainwindow.h ..\qtmidiplayer\playerheartbeatcallback.h ..\qtmidiplayer\playerfinishedcallback.h ..\qtmidiplayer\mynotecallback.h  ..\qtmidiplayer\main.cpp ..\qtmidiplayer\mainwindow.cpp ..\qtmidiplayer\playerheartbeatcallback.cpp ..\qtmidiplayer\playerfinishedcallback.cpp ..\qtmidiplayer\mynotecallback.cpp ..\qtmidiplayer\mainwindow.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) main.o mainwindow.o mynotecallback.o playerfinishedcallback.o playerheartbeatcallback.o moc_mainwindow.o moc_playerheartbeatcallback.o moc_playerfinishedcallback.o
+	-$(DEL_FILE) main.o mainwindow.o playerheartbeatcallback.o playerfinishedcallback.o mynotecallback.o qrc_pianokeys.o moc_mainwindow.o moc_playerheartbeatcallback.o moc_playerfinishedcallback.o moc_mynotecallback.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -525,17 +531,43 @@ benchmark: first
 
 compiler_no_pch_compiler_make_all:
 compiler_no_pch_compiler_clean:
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_pianokeys.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_pianokeys.cpp
+qrc_pianokeys.cpp: ../qtmidiplayer/pianokeys.qrc \
+		G:/QT/5.14.1/mingw73_64/bin/rcc.exe \
+		../qtmidiplayer/images/C8.png \
+		../qtmidiplayer/images/A.png \
+		../qtmidiplayer/images/B.png \
+		../qtmidiplayer/images/C.png \
+		../qtmidiplayer/images/Cpurple.png \
+		../qtmidiplayer/images/D.png \
+		../qtmidiplayer/images/Dpurple.png \
+		../qtmidiplayer/images/E.png \
+		../qtmidiplayer/images/F.png \
+		../qtmidiplayer/images/G.png \
+		../qtmidiplayer/images/C8purple.png \
+		../qtmidiplayer/images/C\#Dbpurple.png \
+		../qtmidiplayer/images/C\#Db.png \
+		../qtmidiplayer/images/Epurple.png \
+		../qtmidiplayer/images/Fpurple.png \
+		../qtmidiplayer/images/Gpurple.png \
+		../qtmidiplayer/images/C\#Dbpurple1.png \
+		../qtmidiplayer/images/C\#Dbpurple2.png \
+		../qtmidiplayer/images/C\#Dbpurple3.png \
+		../qtmidiplayer/images/Apurple.png \
+		../qtmidiplayer/images/Bpurple.png
+	G:\QT\5.14.1\mingw73_64\bin\rcc.exe -name pianokeys ..\qtmidiplayer\pianokeys.qrc -o qrc_pianokeys.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
 moc_predefs.h: G:/QT/5.14.1/mingw73_64/mkspecs/features/data/dummy.cpp
 	g++ -fno-keep-inline-dllexport -g -Wall -Wextra -Wextra -dM -E -o moc_predefs.h G:\QT\5.14.1\mingw73_64\mkspecs\features\data\dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_playerheartbeatcallback.cpp moc_playerfinishedcallback.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_playerheartbeatcallback.cpp moc_playerfinishedcallback.cpp moc_mynotecallback.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_playerheartbeatcallback.cpp moc_playerfinishedcallback.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_playerheartbeatcallback.cpp moc_playerfinishedcallback.cpp moc_mynotecallback.cpp
 moc_mainwindow.cpp: ../qtmidiplayer/mainwindow.h \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/QMainWindow \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qmainwindow.h \
@@ -647,6 +679,9 @@ moc_mainwindow.cpp: ../qtmidiplayer/mainwindow.h \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/QActionGroup \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qactiongroup.h \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qaction.h \
+		G:/QT/5.14.1/mingw73_64/include/QtWidgets/QPushButton \
+		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qpushbutton.h \
+		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
 		../../include/cxxmidi/file.hpp \
 		../../include/cxxmidi/guts/stdint.hpp \
 		../../include/cxxmidi/guts/compiler.hpp \
@@ -660,6 +695,8 @@ moc_mainwindow.cpp: ../qtmidiplayer/mainwindow.h \
 		../../include/cxxmidi/player/abstract.hpp \
 		../../include/cxxmidi/time/point.hpp \
 		../../include/cxxmidi/callback.hpp \
+		../../include/cxxmidi/MyNoteCallaback.hpp \
+		../../include/cxxmidi/note.hpp \
 		../../include/cxxmidi/output/abstract.hpp \
 		../../include/cxxmidi/converters.hpp \
 		../../include/cxxmidi/time/period.hpp \
@@ -671,10 +708,10 @@ moc_mainwindow.cpp: ../qtmidiplayer/mainwindow.h \
 		../../include/cxxmidi/guts/thread.hpp \
 		../../include/cxxmidi/guts/mutex.hpp \
 		../../include/cxxmidi/sleep.hpp \
-		../../include/cxxmidi/note.hpp \
 		../qtmidiplayer/playerheartbeatcallback.h \
 		G:/QT/5.14.1/mingw73_64/include/QtCore/QObject \
 		../qtmidiplayer/playerfinishedcallback.h \
+		../qtmidiplayer/mynotecallback.h \
 		moc_predefs.h \
 		G:/QT/5.14.1/mingw73_64/bin/moc.exe
 	G:\QT\5.14.1\mingw73_64\bin\moc.exe $(DEFINES) --include G:/University/C++/CxxMidiPlayer/cxxmidi/examples/build-qtmidiplayer-Desktop_Qt_5_14_1_MinGW_64_bit-Debug/moc_predefs.h -IG:/QT/5.14.1/mingw73_64/mkspecs/win32-g++ -IG:/University/C++/CxxMidiPlayer/cxxmidi/examples/qtmidiplayer -IG:/University/C++/CxxMidiPlayer/cxxmidi/include -IG:/QT/5.14.1/mingw73_64/include -IG:/QT/5.14.1/mingw73_64/include/QtWidgets -IG:/QT/5.14.1/mingw73_64/include/QtGui -IG:/QT/5.14.1/mingw73_64/include/QtANGLE -IG:/QT/5.14.1/mingw73_64/include/QtCore -I. -IG:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IG:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IG:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IG:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IG:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IG:/QT/Tools/mingw730_64/x86_64-w64-mingw32/include ..\qtmidiplayer\mainwindow.h -o moc_mainwindow.cpp
@@ -739,6 +776,8 @@ moc_playerheartbeatcallback.cpp: ../qtmidiplayer/playerheartbeatcallback.h \
 		../../include/cxxmidi/guts/3rdparty/pstdint.h \
 		../../include/cxxmidi/time/point.hpp \
 		../../include/cxxmidi/callback.hpp \
+		../../include/cxxmidi/MyNoteCallaback.hpp \
+		../../include/cxxmidi/note.hpp \
 		../../include/cxxmidi/utils.hpp \
 		../../include/cxxmidi/guts/endianness.hpp \
 		../../include/cxxmidi/file.hpp \
@@ -814,6 +853,8 @@ moc_playerfinishedcallback.cpp: ../qtmidiplayer/playerfinishedcallback.h \
 		../../include/cxxmidi/guts/3rdparty/pstdint.h \
 		../../include/cxxmidi/time/point.hpp \
 		../../include/cxxmidi/callback.hpp \
+		../../include/cxxmidi/MyNoteCallaback.hpp \
+		../../include/cxxmidi/note.hpp \
 		../../include/cxxmidi/utils.hpp \
 		../../include/cxxmidi/guts/endianness.hpp \
 		../../include/cxxmidi/file.hpp \
@@ -828,6 +869,83 @@ moc_playerfinishedcallback.cpp: ../qtmidiplayer/playerfinishedcallback.h \
 		moc_predefs.h \
 		G:/QT/5.14.1/mingw73_64/bin/moc.exe
 	G:\QT\5.14.1\mingw73_64\bin\moc.exe $(DEFINES) --include G:/University/C++/CxxMidiPlayer/cxxmidi/examples/build-qtmidiplayer-Desktop_Qt_5_14_1_MinGW_64_bit-Debug/moc_predefs.h -IG:/QT/5.14.1/mingw73_64/mkspecs/win32-g++ -IG:/University/C++/CxxMidiPlayer/cxxmidi/examples/qtmidiplayer -IG:/University/C++/CxxMidiPlayer/cxxmidi/include -IG:/QT/5.14.1/mingw73_64/include -IG:/QT/5.14.1/mingw73_64/include/QtWidgets -IG:/QT/5.14.1/mingw73_64/include/QtGui -IG:/QT/5.14.1/mingw73_64/include/QtANGLE -IG:/QT/5.14.1/mingw73_64/include/QtCore -I. -IG:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IG:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IG:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IG:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IG:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IG:/QT/Tools/mingw730_64/x86_64-w64-mingw32/include ..\qtmidiplayer\playerfinishedcallback.h -o moc_playerfinishedcallback.cpp
+
+moc_mynotecallback.cpp: ../qtmidiplayer/mynotecallback.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/QObject \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qobject.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qobjectdefs.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qnamespace.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qglobal.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qconfig-bootstrapped.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qconfig.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qtcore-config.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qsystemdetection.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qprocessordetection.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qcompilerdetection.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qtypeinfo.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qsysinfo.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qlogging.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qflags.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qatomic.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qbasicatomic.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qatomic_bootstrap.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qgenericatomic.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qatomic_cxx11.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qatomic_msvc.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qglobalstatic.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qmutex.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qnumeric.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qversiontagging.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qobjectdefs_impl.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstring.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qchar.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qbytearray.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qrefcount.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qarraydata.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringliteral.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringalgorithms.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringview.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringbuilder.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qlist.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qalgorithms.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qiterator.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qhashfunctions.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qpair.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qvector.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qcontainertools_impl.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qpoint.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qbytearraylist.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringlist.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qregexp.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringmatcher.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qcoreevent.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qscopedpointer.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qmetatype.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qvarlengtharray.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qcontainerfwd.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qobject_impl.h \
+		../../include/cxxmidi/player/abstract.hpp \
+		../../include/cxxmidi/guts/stdint.hpp \
+		../../include/cxxmidi/guts/compiler.hpp \
+		../../include/cxxmidi/guts/3rdparty/pstdint.h \
+		../../include/cxxmidi/time/point.hpp \
+		../../include/cxxmidi/callback.hpp \
+		../../include/cxxmidi/MyNoteCallaback.hpp \
+		../../include/cxxmidi/note.hpp \
+		../../include/cxxmidi/utils.hpp \
+		../../include/cxxmidi/guts/endianness.hpp \
+		../../include/cxxmidi/file.hpp \
+		../../include/cxxmidi/track.hpp \
+		../../include/cxxmidi/event.hpp \
+		../../include/cxxmidi/message.hpp \
+		../../include/cxxmidi/guts/simulator.hpp \
+		../../include/cxxmidi/converters.hpp \
+		../../include/cxxmidi/time/duration.hpp \
+		../../include/cxxmidi/time/period.hpp \
+		../../include/cxxmidi/output/abstract.hpp \
+		moc_predefs.h \
+		G:/QT/5.14.1/mingw73_64/bin/moc.exe
+	G:\QT\5.14.1\mingw73_64\bin\moc.exe $(DEFINES) --include G:/University/C++/CxxMidiPlayer/cxxmidi/examples/build-qtmidiplayer-Desktop_Qt_5_14_1_MinGW_64_bit-Debug/moc_predefs.h -IG:/QT/5.14.1/mingw73_64/mkspecs/win32-g++ -IG:/University/C++/CxxMidiPlayer/cxxmidi/examples/qtmidiplayer -IG:/University/C++/CxxMidiPlayer/cxxmidi/include -IG:/QT/5.14.1/mingw73_64/include -IG:/QT/5.14.1/mingw73_64/include/QtWidgets -IG:/QT/5.14.1/mingw73_64/include/QtGui -IG:/QT/5.14.1/mingw73_64/include/QtANGLE -IG:/QT/5.14.1/mingw73_64/include/QtCore -I. -IG:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IG:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IG:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IG:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IG:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IG:/QT/Tools/mingw730_64/x86_64-w64-mingw32/include ..\qtmidiplayer\mynotecallback.h -o moc_mynotecallback.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -846,7 +964,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 
 
@@ -970,6 +1088,9 @@ main.o: ../qtmidiplayer/main.cpp G:/QT/5.14.1/mingw73_64/include/QtWidgets/QAppl
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/QActionGroup \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qactiongroup.h \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qaction.h \
+		G:/QT/5.14.1/mingw73_64/include/QtWidgets/QPushButton \
+		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qpushbutton.h \
+		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
 		../../include/cxxmidi/file.hpp \
 		../../include/cxxmidi/guts/stdint.hpp \
 		../../include/cxxmidi/guts/compiler.hpp \
@@ -983,6 +1104,8 @@ main.o: ../qtmidiplayer/main.cpp G:/QT/5.14.1/mingw73_64/include/QtWidgets/QAppl
 		../../include/cxxmidi/player/abstract.hpp \
 		../../include/cxxmidi/time/point.hpp \
 		../../include/cxxmidi/callback.hpp \
+		../../include/cxxmidi/MyNoteCallaback.hpp \
+		../../include/cxxmidi/note.hpp \
 		../../include/cxxmidi/output/abstract.hpp \
 		../../include/cxxmidi/converters.hpp \
 		../../include/cxxmidi/time/period.hpp \
@@ -994,10 +1117,10 @@ main.o: ../qtmidiplayer/main.cpp G:/QT/5.14.1/mingw73_64/include/QtWidgets/QAppl
 		../../include/cxxmidi/guts/thread.hpp \
 		../../include/cxxmidi/guts/mutex.hpp \
 		../../include/cxxmidi/sleep.hpp \
-		../../include/cxxmidi/note.hpp \
 		../qtmidiplayer/playerheartbeatcallback.h \
 		G:/QT/5.14.1/mingw73_64/include/QtCore/QObject \
-		../qtmidiplayer/playerfinishedcallback.h
+		../qtmidiplayer/playerfinishedcallback.h \
+		../qtmidiplayer/mynotecallback.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ..\qtmidiplayer\main.cpp
 
 mainwindow.o: ../qtmidiplayer/mainwindow.cpp ../qtmidiplayer/mainwindow.h \
@@ -1111,6 +1234,9 @@ mainwindow.o: ../qtmidiplayer/mainwindow.cpp ../qtmidiplayer/mainwindow.h \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/QActionGroup \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qactiongroup.h \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qaction.h \
+		G:/QT/5.14.1/mingw73_64/include/QtWidgets/QPushButton \
+		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qpushbutton.h \
+		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
 		../../include/cxxmidi/file.hpp \
 		../../include/cxxmidi/guts/stdint.hpp \
 		../../include/cxxmidi/guts/compiler.hpp \
@@ -1124,6 +1250,8 @@ mainwindow.o: ../qtmidiplayer/mainwindow.cpp ../qtmidiplayer/mainwindow.h \
 		../../include/cxxmidi/player/abstract.hpp \
 		../../include/cxxmidi/time/point.hpp \
 		../../include/cxxmidi/callback.hpp \
+		../../include/cxxmidi/MyNoteCallaback.hpp \
+		../../include/cxxmidi/note.hpp \
 		../../include/cxxmidi/output/abstract.hpp \
 		../../include/cxxmidi/converters.hpp \
 		../../include/cxxmidi/time/period.hpp \
@@ -1135,10 +1263,10 @@ mainwindow.o: ../qtmidiplayer/mainwindow.cpp ../qtmidiplayer/mainwindow.h \
 		../../include/cxxmidi/guts/thread.hpp \
 		../../include/cxxmidi/guts/mutex.hpp \
 		../../include/cxxmidi/sleep.hpp \
-		../../include/cxxmidi/note.hpp \
 		../qtmidiplayer/playerheartbeatcallback.h \
 		G:/QT/5.14.1/mingw73_64/include/QtCore/QObject \
 		../qtmidiplayer/playerfinishedcallback.h \
+		../qtmidiplayer/mynotecallback.h \
 		ui_mainwindow.h \
 		G:/QT/5.14.1/mingw73_64/include/QtCore/QVariant \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/QApplication \
@@ -1153,20 +1281,20 @@ mainwindow.o: ../qtmidiplayer/mainwindow.cpp ../qtmidiplayer/mainwindow.h \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qabstractspinbox.h \
 		G:/QT/5.14.1/mingw73_64/include/QtGui/qvalidator.h \
 		G:/QT/5.14.1/mingw73_64/include/QtCore/qregularexpression.h \
-		G:/QT/5.14.1/mingw73_64/include/QtWidgets/QHBoxLayout \
-		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qboxlayout.h \
+		G:/QT/5.14.1/mingw73_64/include/QtWidgets/QGridLayout \
+		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qgridlayout.h \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qlayout.h \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qlayoutitem.h \
-		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qgridlayout.h \
+		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qboxlayout.h \
+		G:/QT/5.14.1/mingw73_64/include/QtWidgets/QGroupBox \
+		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qgroupbox.h \
+		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qframe.h \
+		G:/QT/5.14.1/mingw73_64/include/QtWidgets/QHBoxLayout \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/QLabel \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qlabel.h \
-		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qframe.h \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/QMenuBar \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qmenubar.h \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qmenu.h \
-		G:/QT/5.14.1/mingw73_64/include/QtWidgets/QPushButton \
-		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qpushbutton.h \
-		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/QSlider \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qslider.h \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qabstractslider.h \
@@ -1182,7 +1310,6 @@ mainwindow.o: ../qtmidiplayer/mainwindow.cpp ../qtmidiplayer/mainwindow.h \
 		G:/QT/5.14.1/mingw73_64/include/QtGui/qtextcursor.h \
 		G:/QT/5.14.1/mingw73_64/include/QtGui/qtextformat.h \
 		G:/QT/5.14.1/mingw73_64/include/QtGui/qpen.h \
-		G:/QT/5.14.1/mingw73_64/include/QtWidgets/QVBoxLayout \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/QWidget \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/QFileDialog \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qfiledialog.h \
@@ -1190,82 +1317,6 @@ mainwindow.o: ../qtmidiplayer/mainwindow.cpp ../qtmidiplayer/mainwindow.h \
 		G:/QT/5.14.1/mingw73_64/include/QtCore/qfileinfo.h \
 		G:/QT/5.14.1/mingw73_64/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ..\qtmidiplayer\mainwindow.cpp
-
-mynotecallback.o: ../qtmidiplayer/mynotecallback.cpp ../qtmidiplayer/mynotecallback.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mynotecallback.o ..\qtmidiplayer\mynotecallback.cpp
-
-playerfinishedcallback.o: ../qtmidiplayer/playerfinishedcallback.cpp ../qtmidiplayer/playerfinishedcallback.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/QObject \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qobject.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qobjectdefs.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qnamespace.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qglobal.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qconfig-bootstrapped.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qconfig.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qtcore-config.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qsystemdetection.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qprocessordetection.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qcompilerdetection.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qtypeinfo.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qsysinfo.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qlogging.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qflags.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qatomic.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qbasicatomic.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qatomic_bootstrap.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qgenericatomic.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qatomic_cxx11.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qatomic_msvc.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qglobalstatic.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qmutex.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qnumeric.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qversiontagging.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qobjectdefs_impl.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qstring.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qchar.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qbytearray.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qrefcount.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qarraydata.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringliteral.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringalgorithms.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringview.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringbuilder.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qlist.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qalgorithms.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qiterator.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qhashfunctions.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qpair.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qvector.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qcontainertools_impl.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qpoint.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qbytearraylist.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringlist.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qregexp.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringmatcher.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qcoreevent.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qscopedpointer.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qmetatype.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qvarlengtharray.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qcontainerfwd.h \
-		G:/QT/5.14.1/mingw73_64/include/QtCore/qobject_impl.h \
-		../../include/cxxmidi/player/abstract.hpp \
-		../../include/cxxmidi/guts/stdint.hpp \
-		../../include/cxxmidi/guts/compiler.hpp \
-		../../include/cxxmidi/guts/3rdparty/pstdint.h \
-		../../include/cxxmidi/time/point.hpp \
-		../../include/cxxmidi/callback.hpp \
-		../../include/cxxmidi/utils.hpp \
-		../../include/cxxmidi/guts/endianness.hpp \
-		../../include/cxxmidi/file.hpp \
-		../../include/cxxmidi/track.hpp \
-		../../include/cxxmidi/event.hpp \
-		../../include/cxxmidi/message.hpp \
-		../../include/cxxmidi/guts/simulator.hpp \
-		../../include/cxxmidi/converters.hpp \
-		../../include/cxxmidi/time/duration.hpp \
-		../../include/cxxmidi/time/period.hpp \
-		../../include/cxxmidi/output/abstract.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o playerfinishedcallback.o ..\qtmidiplayer\playerfinishedcallback.cpp
 
 playerheartbeatcallback.o: ../qtmidiplayer/playerheartbeatcallback.cpp ../qtmidiplayer/playerheartbeatcallback.h \
 		G:/QT/5.14.1/mingw73_64/include/QtCore/QObject \
@@ -1327,6 +1378,8 @@ playerheartbeatcallback.o: ../qtmidiplayer/playerheartbeatcallback.cpp ../qtmidi
 		../../include/cxxmidi/guts/3rdparty/pstdint.h \
 		../../include/cxxmidi/time/point.hpp \
 		../../include/cxxmidi/callback.hpp \
+		../../include/cxxmidi/MyNoteCallaback.hpp \
+		../../include/cxxmidi/note.hpp \
 		../../include/cxxmidi/utils.hpp \
 		../../include/cxxmidi/guts/endianness.hpp \
 		../../include/cxxmidi/file.hpp \
@@ -1340,6 +1393,159 @@ playerheartbeatcallback.o: ../qtmidiplayer/playerheartbeatcallback.cpp ../qtmidi
 		../../include/cxxmidi/output/abstract.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o playerheartbeatcallback.o ..\qtmidiplayer\playerheartbeatcallback.cpp
 
+playerfinishedcallback.o: ../qtmidiplayer/playerfinishedcallback.cpp ../qtmidiplayer/playerfinishedcallback.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/QObject \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qobject.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qobjectdefs.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qnamespace.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qglobal.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qconfig-bootstrapped.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qconfig.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qtcore-config.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qsystemdetection.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qprocessordetection.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qcompilerdetection.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qtypeinfo.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qsysinfo.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qlogging.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qflags.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qatomic.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qbasicatomic.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qatomic_bootstrap.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qgenericatomic.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qatomic_cxx11.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qatomic_msvc.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qglobalstatic.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qmutex.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qnumeric.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qversiontagging.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qobjectdefs_impl.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstring.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qchar.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qbytearray.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qrefcount.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qarraydata.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringliteral.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringalgorithms.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringview.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringbuilder.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qlist.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qalgorithms.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qiterator.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qhashfunctions.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qpair.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qvector.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qcontainertools_impl.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qpoint.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qbytearraylist.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringlist.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qregexp.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringmatcher.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qcoreevent.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qscopedpointer.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qmetatype.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qvarlengtharray.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qcontainerfwd.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qobject_impl.h \
+		../../include/cxxmidi/player/abstract.hpp \
+		../../include/cxxmidi/guts/stdint.hpp \
+		../../include/cxxmidi/guts/compiler.hpp \
+		../../include/cxxmidi/guts/3rdparty/pstdint.h \
+		../../include/cxxmidi/time/point.hpp \
+		../../include/cxxmidi/callback.hpp \
+		../../include/cxxmidi/MyNoteCallaback.hpp \
+		../../include/cxxmidi/note.hpp \
+		../../include/cxxmidi/utils.hpp \
+		../../include/cxxmidi/guts/endianness.hpp \
+		../../include/cxxmidi/file.hpp \
+		../../include/cxxmidi/track.hpp \
+		../../include/cxxmidi/event.hpp \
+		../../include/cxxmidi/message.hpp \
+		../../include/cxxmidi/guts/simulator.hpp \
+		../../include/cxxmidi/converters.hpp \
+		../../include/cxxmidi/time/duration.hpp \
+		../../include/cxxmidi/time/period.hpp \
+		../../include/cxxmidi/output/abstract.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o playerfinishedcallback.o ..\qtmidiplayer\playerfinishedcallback.cpp
+
+mynotecallback.o: ../qtmidiplayer/mynotecallback.cpp ../qtmidiplayer/mynotecallback.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/QObject \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qobject.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qobjectdefs.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qnamespace.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qglobal.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qconfig-bootstrapped.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qconfig.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qtcore-config.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qsystemdetection.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qprocessordetection.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qcompilerdetection.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qtypeinfo.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qsysinfo.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qlogging.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qflags.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qatomic.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qbasicatomic.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qatomic_bootstrap.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qgenericatomic.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qatomic_cxx11.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qatomic_msvc.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qglobalstatic.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qmutex.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qnumeric.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qversiontagging.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qobjectdefs_impl.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstring.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qchar.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qbytearray.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qrefcount.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qarraydata.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringliteral.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringalgorithms.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringview.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringbuilder.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qlist.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qalgorithms.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qiterator.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qhashfunctions.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qpair.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qvector.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qcontainertools_impl.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qpoint.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qbytearraylist.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringlist.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qregexp.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qstringmatcher.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qcoreevent.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qscopedpointer.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qmetatype.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qvarlengtharray.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qcontainerfwd.h \
+		G:/QT/5.14.1/mingw73_64/include/QtCore/qobject_impl.h \
+		../../include/cxxmidi/player/abstract.hpp \
+		../../include/cxxmidi/guts/stdint.hpp \
+		../../include/cxxmidi/guts/compiler.hpp \
+		../../include/cxxmidi/guts/3rdparty/pstdint.h \
+		../../include/cxxmidi/time/point.hpp \
+		../../include/cxxmidi/callback.hpp \
+		../../include/cxxmidi/MyNoteCallaback.hpp \
+		../../include/cxxmidi/note.hpp \
+		../../include/cxxmidi/utils.hpp \
+		../../include/cxxmidi/guts/endianness.hpp \
+		../../include/cxxmidi/file.hpp \
+		../../include/cxxmidi/track.hpp \
+		../../include/cxxmidi/event.hpp \
+		../../include/cxxmidi/message.hpp \
+		../../include/cxxmidi/guts/simulator.hpp \
+		../../include/cxxmidi/converters.hpp \
+		../../include/cxxmidi/time/duration.hpp \
+		../../include/cxxmidi/time/period.hpp \
+		../../include/cxxmidi/output/abstract.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mynotecallback.o ..\qtmidiplayer\mynotecallback.cpp
+
+qrc_pianokeys.o: qrc_pianokeys.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_pianokeys.o qrc_pianokeys.cpp
+
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
@@ -1348,6 +1554,9 @@ moc_playerheartbeatcallback.o: moc_playerheartbeatcallback.cpp
 
 moc_playerfinishedcallback.o: moc_playerfinishedcallback.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_playerfinishedcallback.o moc_playerfinishedcallback.cpp
+
+moc_mynotecallback.o: moc_mynotecallback.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mynotecallback.o moc_mynotecallback.cpp
 
 ####### Install
 

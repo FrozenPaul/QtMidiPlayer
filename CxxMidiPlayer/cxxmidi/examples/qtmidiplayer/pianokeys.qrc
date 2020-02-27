@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/pianokeys">
+        <file>images/A.png</file>
+        <file>images/Apurple.png</file>
+        <file>images/B.png</file>
+        <file>images/Bpurple.png</file>
+        <file>images/C#Db.png</file>
+        <file>images/C#Dbpurple.png</file>
+        <file>images/C#Dbpurple1.png</file>
+        <file>images/C#Dbpurple2.png</file>
+        <file>images/C#Dbpurple3.png</file>
+        <file>images/C.png</file>
+        <file>images/C8.png</file>
+        <file>images/C8purple.png</file>
+        <file>images/Cpurple.png</file>
+        <file>images/D.png</file>
+        <file>images/Dpurple.png</file>
+        <file>images/E.png</file>
+        <file>images/Epurple.png</file>
+        <file>images/F.png</file>
+        <file>images/Fpurple.png</file>
+        <file>images/G.png</file>
+        <file>images/Gpurple.png</file>
+    </qresource>
+</RCC>

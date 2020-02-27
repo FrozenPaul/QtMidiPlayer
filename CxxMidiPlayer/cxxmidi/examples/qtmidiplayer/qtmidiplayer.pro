@@ -14,17 +14,17 @@ INCLUDEPATH += "../../include"
 
 SOURCES += main.cpp \
     mainwindow.cpp \
-    mynotecallback.cpp \
+    playerheartbeatcallback.cpp \
     playerfinishedcallback.cpp \
-    playerheartbeatcallback.cpp
+    mynotecallback.cpp
 
 HEADERS += \
     mainwindow.h \
-    mynotecallback.h \
     playerheartbeatcallback.h \
-    playerfinishedcallback.h
+    playerfinishedcallback.h \
+    mynotecallback.h
 
-FORMS += \ 
+FORMS += \
     mainwindow.ui
 
 unix:!macx {
@@ -33,5 +33,8 @@ unix:!macx {
 win32 {
     LIBS += "c:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.18362.0\\um\\x64\\winmm.lib"
 }
+
+RESOURCES += \
+    pianokeys.qrc
 
 

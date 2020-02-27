@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[21];
-    char stringdata0[260];
+    QByteArrayData data[23];
+    char stringdata0[275];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -52,7 +52,9 @@ QT_MOC_LITERAL(16, 192, 8), // "QAction*"
 QT_MOC_LITERAL(17, 201, 7), // "action_"
 QT_MOC_LITERAL(18, 209, 14), // "playerFinished"
 QT_MOC_LITERAL(19, 224, 21), // "updateNoteInformation"
-QT_MOC_LITERAL(20, 246, 13) // "CxxMidi::Note"
+QT_MOC_LITERAL(20, 246, 13), // "CxxMidi::Note"
+QT_MOC_LITERAL(21, 260, 4), // "note"
+QT_MOC_LITERAL(22, 265, 9) // "isPressed"
 
     },
     "MainWindow\0onTimeSliderReleased\0\0"
@@ -62,7 +64,7 @@ QT_MOC_LITERAL(20, 246, 13) // "CxxMidi::Note"
     "openFile\0path_\0setOutput\0num_\0"
     "onOutputSelected\0QAction*\0action_\0"
     "playerFinished\0updateNoteInformation\0"
-    "CxxMidi::Note"
+    "CxxMidi::Note\0note\0isPressed"
 };
 #undef QT_MOC_LITERAL
 
@@ -105,7 +107,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void, QMetaType::Int,   14,
     QMetaType::Void, 0x80000000 | 16,   17,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 20, QMetaType::Bool,    2,    2,
+    QMetaType::Void, 0x80000000 | 20, QMetaType::Bool,   21,   22,
 
        0        // eod
 };
