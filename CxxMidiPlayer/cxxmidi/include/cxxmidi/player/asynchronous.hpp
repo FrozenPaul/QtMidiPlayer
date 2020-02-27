@@ -112,13 +112,16 @@ void Asynchronous::play()
     if(reject)
         return;
 
-    if(_thread)
+    if(_thread){
+        _thread->join();
         delete _thread;
+    }
     _thread = new CxxMidi::Guts::Thread(Asynchronous::playerLoop,this);
 }
 
 void Asynchronous::pause()
 {
+    // add be Paul Halian
     if(!isPaused())
     {
         _mutex.lock();
@@ -304,9 +307,17 @@ void *Asynchronous::playerLoop(void * caller_)
         if ((event_our[0] & 0xf0 ) == Message::Type::NoteOn)
         {
             CxxMidi::Note note = event_our[1];
-            QString noteName = QString::fromStdString(CxxMidi::Note::name(note));
-            QString a = "";
-//            (*note_is_pressed) (note, event_our[2] != 0);
+//            uint32_t myDt = event_our.dt();
+//            std::string name = CxxMidi::Note::name(note);
+//            std::cout << CxxMidi::Note::name(note) << std::endl;
+//            std::string noteName = CxxMidi::Note::name(note);
+            (*note_is_pressed) (note, event_our[2] != 0);
+        }else {
+            if (event_our[0] == Message::Type::NoteOff) {
+                CxxMidi::Note note = event_our[1];
+//                std::string name = CxxMidi::Note::name(note);
+                (*note_is_pressed) (note, false);
+            }
         }
 
         that->_mutex.unlock();
