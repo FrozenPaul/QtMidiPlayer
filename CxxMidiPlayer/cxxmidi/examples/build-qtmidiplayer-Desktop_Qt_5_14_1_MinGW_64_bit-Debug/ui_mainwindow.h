@@ -43,6 +43,7 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QPushButton *pushButtonPlay;
     QPushButton *pushButtonPause;
+    QPushButton *pushButtonStop;
     QSpacerItem *horizontalSpacer;
     QLabel *label_2;
     QDoubleSpinBox *doubleSpinBoxSpeed;
@@ -138,6 +139,7 @@ public:
     QPushButton *A1;
     QPushButton *D4;
     QPushButton *F1s;
+    QLabel *label_3;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -145,15 +147,17 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1582, 509);
-        MainWindow->setMinimumSize(QSize(1582, 509));
+        MainWindow->resize(1582, 531);
+        MainWindow->setMinimumSize(QSize(1582, 531));
         MainWindow->setStyleSheet(QString::fromUtf8("#MainWindow{\n"
 "	height: 500px;\n"
 "    width: 900px;\n"
+"\n"
 "}"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setLayoutDirection(Qt::LeftToRight);
+        centralwidget->setStyleSheet(QString::fromUtf8(""));
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(10, 10, 93, 28));
@@ -162,11 +166,12 @@ public:
 "}"));
         textBrowser = new QTextBrowser(centralwidget);
         textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
-        textBrowser->setGeometry(QRect(10, 40, 1561, 201));
+        textBrowser->setGeometry(QRect(10, 40, 1561, 221));
         textBrowser->setMouseTracking(true);
         textBrowser->setLayoutDirection(Qt::LeftToRight);
         textBrowser->setStyleSheet(QString::fromUtf8("#textBrowser{\n"
-"text-align: center;\n"
+"	/*color: white;\n"
+"	border-image: url(\"G:/University/images/MidiPianoBackground.jpg\");*/\n"
 "}"));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
@@ -198,21 +203,48 @@ public:
 
         layoutWidget1 = new QWidget(centralwidget);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(9, 417, 1561, 30));
+        layoutWidget1->setGeometry(QRect(9, 417, 1561, 62));
         horizontalLayout_2 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
         pushButtonPlay = new QPushButton(layoutWidget1);
         pushButtonPlay->setObjectName(QString::fromUtf8("pushButtonPlay"));
-        pushButtonPlay->setStyleSheet(QString::fromUtf8(""));
+        pushButtonPlay->setStyleSheet(QString::fromUtf8("#pushButtonPlay{\n"
+"	border-image: url(\"G:/University/images/Play.png\");\n"
+"	width: 60px;\n"
+"	height: 60px;\n"
+"}\n"
+"#pushButtonPlay:pressed{\n"
+"	margin: 5px;\n"
+"}"));
 
         horizontalLayout_2->addWidget(pushButtonPlay);
 
         pushButtonPause = new QPushButton(layoutWidget1);
         pushButtonPause->setObjectName(QString::fromUtf8("pushButtonPause"));
-        pushButtonPause->setStyleSheet(QString::fromUtf8(""));
+        pushButtonPause->setStyleSheet(QString::fromUtf8("#pushButtonPause{\n"
+"	border-image: url(\"G:/University/images/Pause.png\");\n"
+"	width: 60px;\n"
+"	height: 60px;\n"
+"}\n"
+"#pushButtonPause:pressed{\n"
+"	margin: 5px;\n"
+"}"));
 
         horizontalLayout_2->addWidget(pushButtonPause);
+
+        pushButtonStop = new QPushButton(layoutWidget1);
+        pushButtonStop->setObjectName(QString::fromUtf8("pushButtonStop"));
+        pushButtonStop->setStyleSheet(QString::fromUtf8("#pushButtonStop{\n"
+"	border-image: url(\"G:/University/images/Stop.png\");\n"
+"	width: 60px;\n"
+"	height: 60px;\n"
+"}\n"
+"#pushButtonStop:pressed{\n"
+"	margin: 5px;\n"
+"}"));
+
+        horizontalLayout_2->addWidget(pushButtonStop);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -242,6 +274,10 @@ public:
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         groupBox = new QGroupBox(gridLayoutWidget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
+        groupBox->setMinimumSize(QSize(1557, 120));
+        groupBox->setStyleSheet(QString::fromUtf8("#groupBox{\n"
+"	border: none;\n"
+"}"));
         G2s = new QPushButton(groupBox);
         G2s->setObjectName(QString::fromUtf8("G2s"));
         G2s->setGeometry(QRect(410, 10, 20, 71));
@@ -1484,7 +1520,16 @@ public:
 
         gridLayout->addLayout(horizontalLayout_3, 0, 0, 1, 1);
 
+        label_3 = new QLabel(centralwidget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setGeometry(QRect(110, 10, 431, 21));
         MainWindow->setCentralWidget(centralwidget);
+        textBrowser->raise();
+        pushButton->raise();
+        layoutWidget->raise();
+        layoutWidget->raise();
+        gridLayoutWidget->raise();
+        label_3->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 1582, 26));
@@ -1505,8 +1550,9 @@ public:
         labelTime->setText(QCoreApplication::translate("MainWindow", "00:00:00", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "/", nullptr));
         labelTotal->setText(QCoreApplication::translate("MainWindow", "00:00:00", nullptr));
-        pushButtonPlay->setText(QCoreApplication::translate("MainWindow", "Play", nullptr));
-        pushButtonPause->setText(QCoreApplication::translate("MainWindow", "Pause", nullptr));
+        pushButtonPlay->setText(QString());
+        pushButtonPause->setText(QString());
+        pushButtonStop->setText(QString());
         label_2->setText(QCoreApplication::translate("MainWindow", "Speed:", nullptr));
         doubleSpinBoxSpeed->setSuffix(QCoreApplication::translate("MainWindow", "x", nullptr));
         groupBox->setTitle(QString());
@@ -1598,6 +1644,7 @@ public:
         A1->setText(QString());
         D4->setText(QString());
         F1s->setText(QString());
+        label_3->setText(QString());
     } // retranslateUi
 
 };

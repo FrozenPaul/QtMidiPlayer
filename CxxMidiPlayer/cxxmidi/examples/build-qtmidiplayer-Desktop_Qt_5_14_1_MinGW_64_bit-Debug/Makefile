@@ -537,8 +537,10 @@ compiler_rcc_clean:
 qrc_pianokeys.cpp: ../qtmidiplayer/pianokeys.qrc \
 		G:/QT/5.14.1/mingw73_64/bin/rcc.exe \
 		../qtmidiplayer/images/C8.png \
+		../qtmidiplayer/images/pause.png \
 		../qtmidiplayer/images/A.png \
 		../qtmidiplayer/images/B.png \
+		../qtmidiplayer/images/play.png \
 		../qtmidiplayer/images/C.png \
 		../qtmidiplayer/images/Cpurple.png \
 		../qtmidiplayer/images/D.png \
@@ -551,6 +553,7 @@ qrc_pianokeys.cpp: ../qtmidiplayer/pianokeys.qrc \
 		../qtmidiplayer/images/C\#Db.png \
 		../qtmidiplayer/images/Epurple.png \
 		../qtmidiplayer/images/Fpurple.png \
+		../qtmidiplayer/images/Stop.png \
 		../qtmidiplayer/images/Gpurple.png \
 		../qtmidiplayer/images/C\#Dbpurple1.png \
 		../qtmidiplayer/images/C\#Dbpurple2.png \

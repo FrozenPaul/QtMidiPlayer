@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[23];
-    char stringdata0[275];
+    QByteArrayData data[25];
+    char stringdata0[310];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -54,7 +54,9 @@ QT_MOC_LITERAL(18, 209, 14), // "playerFinished"
 QT_MOC_LITERAL(19, 224, 21), // "updateNoteInformation"
 QT_MOC_LITERAL(20, 246, 13), // "CxxMidi::Note"
 QT_MOC_LITERAL(21, 260, 4), // "note"
-QT_MOC_LITERAL(22, 265, 9) // "isPressed"
+QT_MOC_LITERAL(22, 265, 9), // "isPressed"
+QT_MOC_LITERAL(23, 275, 13), // "onStopClicked"
+QT_MOC_LITERAL(24, 289, 20) // "repaintPushedButtons"
 
     },
     "MainWindow\0onTimeSliderReleased\0\0"
@@ -64,7 +66,8 @@ QT_MOC_LITERAL(22, 265, 9) // "isPressed"
     "openFile\0path_\0setOutput\0num_\0"
     "onOutputSelected\0QAction*\0action_\0"
     "playerFinished\0updateNoteInformation\0"
-    "CxxMidi::Note\0note\0isPressed"
+    "CxxMidi::Note\0note\0isPressed\0onStopClicked\0"
+    "repaintPushedButtons"
 };
 #undef QT_MOC_LITERAL
 
@@ -74,7 +77,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      14,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -82,18 +85,20 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   74,    2, 0x08 /* Private */,
-       3,    0,   75,    2, 0x08 /* Private */,
-       4,    1,   76,    2, 0x08 /* Private */,
-       6,    1,   79,    2, 0x08 /* Private */,
-       9,    0,   82,    2, 0x08 /* Private */,
-      10,    0,   83,    2, 0x08 /* Private */,
-      11,    1,   84,    2, 0x08 /* Private */,
-      11,    0,   87,    2, 0x08 /* Private */,
-      13,    1,   88,    2, 0x08 /* Private */,
-      15,    1,   91,    2, 0x08 /* Private */,
-      18,    0,   94,    2, 0x08 /* Private */,
-      19,    2,   95,    2, 0x08 /* Private */,
+       1,    0,   84,    2, 0x08 /* Private */,
+       3,    0,   85,    2, 0x08 /* Private */,
+       4,    1,   86,    2, 0x08 /* Private */,
+       6,    1,   89,    2, 0x08 /* Private */,
+       9,    0,   92,    2, 0x08 /* Private */,
+      10,    0,   93,    2, 0x08 /* Private */,
+      11,    1,   94,    2, 0x08 /* Private */,
+      11,    0,   97,    2, 0x08 /* Private */,
+      13,    1,   98,    2, 0x08 /* Private */,
+      15,    1,  101,    2, 0x08 /* Private */,
+      18,    0,  104,    2, 0x08 /* Private */,
+      19,    2,  105,    2, 0x08 /* Private */,
+      23,    0,  110,    2, 0x08 /* Private */,
+      24,    0,  111,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -108,6 +113,8 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void, 0x80000000 | 16,   17,
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 20, QMetaType::Bool,   21,   22,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -130,6 +137,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 9: _t->onOutputSelected((*reinterpret_cast< QAction*(*)>(_a[1]))); break;
         case 10: _t->playerFinished(); break;
         case 11: _t->updateNoteInformation((*reinterpret_cast< CxxMidi::Note(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
+        case 12: _t->onStopClicked(); break;
+        case 13: _t->repaintPushedButtons(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -175,13 +184,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 14;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 12)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 14;
     }
     return _id;
 }
