@@ -21,5 +21,8 @@
         <file>images/Fpurple.png</file>
         <file>images/G.png</file>
         <file>images/Gpurple.png</file>
+        <file>images/pause.png</file>
+        <file>images/play.png</file>
+        <file>images/Stop.png</file>
     </qresource>
 </RCC>

@@ -40,6 +40,8 @@ private slots:
     void onOutputSelected(QAction* action_);
     void playerFinished();
     void updateNoteInformation(CxxMidi::Note note, bool isPressed);
+    void onStopClicked();
+    void repaintPushedButtons();
 
 private:
 
@@ -65,7 +67,7 @@ private:
     QMap<QString,QPushButton*> _allCurrentPushedButtons;
 
     bool _sliderLocked;
-    bool _is_playing = true;
+    bool _is_first_play = true;
 };
 
 #endif // MAINWINDOW_H

@@ -72,9 +72,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&_myNoteCallback, SIGNAL(noteChanged(CxxMidi::Note,bool)),
             this,SLOT(updateNoteInformation(CxxMidi::Note,bool)),Qt::QueuedConnection);
 
-//    _midiPlayer->repeatCallback(&_myNoteCallback);
-//    connect(&_myNoteCallback,SIGNAL(noteChanged(CxxMidi::Note,bool)),
-//            this,SLOT(updateNoteInformation(CxxMidi::Note, bool)),Qt::QueuedConnection);
 
     // add by Paul Halian
     QList<QPushButton *> allPButtons = centralWidget()->findChildren<QPushButton *>();
@@ -96,6 +93,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(_ui->pushButtonPause,SIGNAL(clicked()),
             this,SLOT(onPauseClicked()));
+
+    connect(_ui->pushButtonStop,SIGNAL(clicked()),
+            this,SLOT(onStopClicked()));
 
     connect(_ui->sliderTimeline,SIGNAL(sliderPressed()),
             this,SLOT(onTimeSliderPressed()));
@@ -189,13 +189,18 @@ void MainWindow::openFile()
 {
     _midiPlayer->pause();
     QString fileName = QFileDialog::getOpenFileName(this,
-                                                    tr("Открыть Файл"), ".", tr("MIDI files (*.mid *.midi);;Any files (*)"));
+                                                    tr("Открыть Файл"), "C:/Users/User/Downloads", tr("MIDI files (*.mid *.midi);;Any files (*)"));
     if( fileName.size() )
     {
         this->openFile(fileName);
         //add be Paul Halian
         _ui->textBrowser->clear();
+        _ui->label_3->clear();
+        _ui->label_3->setText(fileName.split("/")[4]);
 
+//        if (_is_first_play) {
+//            _midiPlayer->setSpeed(100000);
+//        }
         _midiPlayer->play();
 
     }
@@ -208,9 +213,7 @@ void MainWindow::openFile(const QString& path_)
     if(_midiPlayer->isPlaying())
         _midiPlayer->pause();
 
-    for (auto a: _allCurrentPushedButtons) {
-        SetButtonBackground(a,false);
-    }
+    repaintPushedButtons();
 
     if(_midiFile)
         delete _midiFile;
@@ -236,8 +239,17 @@ void MainWindow::onPauseClicked()
     _ui->textBrowser->insertPlainText("Pause\n");
 }
 
+void MainWindow::onStopClicked()
+{
+    repaintPushedButtons();
+    playerFinished();
+}
+
+
 void MainWindow::playerFinished()
 {
+//    _is_first_play = false;
+//    _midiPlayer->setSpeed(1);
     _midiPlayer->goTo(CxxMidi::Time::Point::zero());
     _midiPlayer->play();
 }
@@ -281,6 +293,13 @@ void MainWindow::updateNoteInformation(CxxMidi::Note note, bool isPressed)
 
 }
 
+void MainWindow::repaintPushedButtons()
+{
+    for(auto a : _allCurrentPushedButtons){
+        SetButtonBackground(a,false);
+    }
+}
+
 void MainWindow::onSpeedChange(double speed_)
 {
     _midiPlayer->setSpeed(speed_);
@@ -294,9 +313,7 @@ void MainWindow::onTimeSliderPressed()
 void MainWindow::onTimeSliderReleased()
 {
     // add by Paul Halian
-    for (auto a : _allCurrentPushedButtons) {
-        SetButtonBackground(a,false);
-    }
+    repaintPushedButtons();
     //
 
     double val = _ui->sliderTimeline->value();
