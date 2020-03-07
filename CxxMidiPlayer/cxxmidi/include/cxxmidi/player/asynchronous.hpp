@@ -307,15 +307,21 @@ void *Asynchronous::playerLoop(void * caller_)
         if ((event_our[0] & 0xf0 ) == Message::Type::NoteOn)
         {
             CxxMidi::Note note = event_our[1];
+            std::string name = CxxMidi::Note::name(note);
+
+//          need to send dt as third parameter of callback function
+
+//            bool press = event_our[2] != 0;
+//            std::cout << CxxMidi::Note::name(note) << " " <<press << std::endl;
+//            std::cout << "dt = " << dt << std::endl;
 //            uint32_t myDt = event_our.dt();
-//            std::string name = CxxMidi::Note::name(note);
-//            std::cout << CxxMidi::Note::name(note) << std::endl;
+//            std::cout << "event dt = " << myDt << std::endl;
+
 //            std::string noteName = CxxMidi::Note::name(note);
             (*note_is_pressed) (note, event_our[2] != 0);
         }else {
-            if (event_our[0] == Message::Type::NoteOff) {
+            if ((event_our[0] & 0xf0 )== Message::Type::NoteOff) {
                 CxxMidi::Note note = event_our[1];
-//                std::string name = CxxMidi::Note::name(note);
                 (*note_is_pressed) (note, false);
             }
         }
